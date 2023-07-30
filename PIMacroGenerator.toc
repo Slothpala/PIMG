@@ -1,8 +1,9 @@
 ## Interface: 100005
+## Version: @project-version@
 ## Title: PIMacroGenerator
 ## Author: Slothpala
 ## SavedVariables: PIMacroGeneratorDB
 ## IconTexture: Interface\AddOns\PIMacroGenerator\Icon.tga
-##Version: 0.1
+## X-Curse-Project-ID: 896769
 
 PIMacroGenerator.lua
