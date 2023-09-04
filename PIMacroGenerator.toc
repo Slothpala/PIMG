@@ -1,4 +1,4 @@
-## Interface: 100005
+## Interface: 100107
 ## Version: @project-version@
 ## Title: PIMacroGenerator
 ## Author: Slothpala
