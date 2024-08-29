@@ -47,7 +47,8 @@ SlashCmdList["PIMacroGenerator"] = function(msg)
         PIMGPrint("No PI target.","F82C00")
         name = ""
     end
-    local localizedSpellName = GetSpellInfo(10060)
+    local spellInfo = C_Spell.GetSpellInfo(10060)
+    local localizedSpellName = spellInfo.name
     local macroText = "#showtooltip\n/cast [@"..name..",help,nodead][] "..localizedSpellName.. "\n/cast [@player] "..localizedSpellName
     local body = macroText .. userAdded
     if not alreadyHasMacro then 
