@@ -31,14 +31,12 @@ SlashCmdList["PIMacroGenerator"] = function(msg)
     local userAdded = PIMacroGeneratorDB or ""
 
     if msg ~= "" then
-        if msg:match("add ") then
+        if msg:match("^add ") then
             userAdded = string.sub(msg, 5)
             userAdded = string.gsub(userAdded, "/", "\n/")
             PIMGPrint(userAdded, "A5AAD9")
             print("added to the macro.")
-        end
-
-        if msg:match("reset") then
+        elseif msg == "reset" then
             userAdded = ""
             PIMGPrint("user added values removed.")
         end
@@ -46,7 +44,7 @@ SlashCmdList["PIMacroGenerator"] = function(msg)
         PIMacroGeneratorDB = userAdded
     end
 
-    local name = UnitName("target")
+    local name = GetUnitName("target", true)
 
     if not name then
         PIMGPrint("No PI target.", "F82C00")
@@ -54,6 +52,12 @@ SlashCmdList["PIMacroGenerator"] = function(msg)
     end
 
     local spellInfo = C_Spell.GetSpellInfo(10060)
+
+    if not spellInfo then
+        PIMGPrint("Could not load Power Infusion spell info. Please try again.", "F82C00")
+        return
+    end
+
     local localizedSpellName = spellInfo.name
 
     local macroText = "#showtooltip\n/cast [@" .. name .. ",help,nodead][] "
